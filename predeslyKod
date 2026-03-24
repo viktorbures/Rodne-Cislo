@@ -1,0 +1,94 @@
+int funkceRok() {
+    int rok;
+    int characters;
+
+    do {
+        printf("Zadej rok v intervalu %d a %d \n", MIN_YEAR, MAX_YEAR);
+        scanf("%d", &rok);
+
+        characters = buffer();
+        if (!characters) {
+            printf("Invalidni input, zkus to znova. \n");
+        } else if (rok > MAX_YEAR || rok < MIN_YEAR) {
+            printf("Zadane cislo neni v intervalu od %d do %d. \n", MIN_YEAR, MAX_YEAR);
+        }
+    } while (rok > MAX_YEAR || rok < MIN_YEAR || !characters);
+
+    return rok;
+}
+
+int funkceMesic() {
+    int mesic;
+    int characters;
+
+    do {
+        printf("Zadej mesic v intervalu %d a %d \n", MIN_MONTH, MAX_MONTH);
+        scanf("%d", &mesic);
+
+        characters = buffer();
+        if (!characters) {
+            printf("Invalidni input, zkus to znova. \n");
+        } else if (mesic > MAX_MONTH || mesic < MIN_MONTH) {
+            printf("Zadane cislo neni v intervalu od %d do %d. \n", MIN_MONTH, MAX_MONTH);
+        }
+    } while (mesic > MAX_MONTH || mesic < MIN_MONTH || !characters);
+
+    return mesic;
+}
+
+int funkceDen() {
+    int den;
+    int characters;
+
+    do {
+        printf("Zadej den v intervalu %d a %d \n", MIN_DAY, MAX_DAY);
+        scanf("%d", &den);
+
+        characters = buffer();
+        if (!characters) {
+            printf("Invalidni input, zkus to znova. \n");
+        } else if (den > MAX_DAY || den < MIN_DAY) {
+            printf("Zadane cislo neni v intervalu od %d do %d. \n", MIN_DAY, MAX_DAY);
+        }
+    } while (den > MAX_DAY || den < MIN_DAY || !characters);
+
+    return den;
+}
+
+int funkcePohlavi() {
+    int pohlavi;
+    int characters;
+
+    do {
+        printf("Zadej pohlavi v intervalu %d a %d (0 - zena, 1 - muz)\n", MIN_POHLAVI, MAX_POHLAVI);
+        scanf("%d", &pohlavi);
+
+        characters = buffer();
+        if (!characters) {
+            printf("Invalidni input, zkus to znova. \n");
+        } else if (pohlavi > MAX_POHLAVI || pohlavi < MIN_POHLAVI) {
+            printf("Zadane cislo neni v intervalu od %d do %d. \n", MIN_POHLAVI, MAX_POHLAVI);
+        }
+    } while (pohlavi > MAX_POHLAVI || pohlavi < MIN_POHLAVI || !characters);
+
+    return pohlavi;
+}
+
+int funkceTrojcisli() {
+    int trojcisli;
+    int characters;
+
+    do {
+        printf("Zadej den v intervalu %d a %d \n", MIN_TROJCISLI, MAX_TROJCISLI);
+        scanf("%d", &trojcisli);
+
+        characters = buffer();
+        if (!characters) {
+            printf("Invalidni input, zkus to znova. \n");
+        } else if (trojcisli > MAX_TROJCISLI || trojcisli < MIN_TROJCISLI) {
+            printf("Zadane cislo neni v intervalu od %d do %d. \n", MIN_TROJCISLI, MAX_TROJCISLI);
+        }
+    } while (trojcisli > MAX_TROJCISLI || trojcisli < MIN_TROJCISLI || !characters);
+
+    return trojcisli;
+}

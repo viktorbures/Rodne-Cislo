@@ -137,3 +137,5 @@ int main(void) {
 
     return 0;
 }
+
+// DODELAT: kdyz je zbytek 10, to trojcisli se musi vygenerovat znovu (nahodne)

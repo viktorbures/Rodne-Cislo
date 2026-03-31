@@ -84,20 +84,25 @@ int dniVMesici(int rok, int mesic) {
 }
 
 int posledniCislo(long long int zaklad) {
-    int zbytek = (zaklad * 10) % 11;
+    int zbytek = zaklad % 11;
+    int check = (11 - (zbytek * 10) % 11) % 11;
 
-    return (11 - zbytek) % 11;
+    if(check == 10) {
+        check = 0;
+    }
+
+    return check;
 }
 
 void rodneCislo(int rok, int mesic, int den, int pohlavi, int trojcisli, int posledniCislo, char *rc) {
     int r = rok % 100;
-    int m;
+    int m = (pohlavi == 0) ? mesic + 50 : mesic;
 
-    if (pohlavi == 0) {
+    /*if (pohlavi == 0) {
         m = mesic + 50;
     } else {
         m = mesic;
-    }
+    } */
 
     sprintf(rc, "%02d%02d%02d/%03d%d", r, m, den, trojcisli, posledniCislo);
 }
@@ -118,8 +123,8 @@ int main(void) {
         int pohlavi = zadaneCislo(MIN_POHLAVI, MAX_POHLAVI, "Zadej pohlavi (0 - zena, 1 - muz)");
         int trojcisli = zadaneCislo(MIN_TROJCISLI, MAX_TROJCISLI, "Zadej trojcisli");
 
-
-        sprintf(zakladStr, "%02d%02d%02d%03d", rok, mesic, den, trojcisli);
+        int m = (pohlavi == 0) ? mesic + 50 : mesic;
+        sprintf(zakladStr, "%02d%02d%02d%03d", rok % 100, m, den, trojcisli);
         long long int zaklad = atoll(zakladStr);
 
         int posledniNum = posledniCislo(zaklad);

@@ -139,3 +139,5 @@ int main(void) {
 }
 
 // DODELAT: kdyz je zbytek 10, to trojcisli se musi vygenerovat znovu (nahodne)
+// Odstranit long long (mozna se vleze int)
+// Funkce posledniCislo bere parametr ale nijak ho nevyuziva

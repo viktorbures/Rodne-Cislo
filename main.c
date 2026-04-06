@@ -83,7 +83,7 @@ int dniVMesici(int rok, int mesic) {
     }
 }
 
-int posledniCislo(long long int zaklad) {
+int posledniCislo(int zaklad) {
     int zbytek = zaklad % 11;
     int check = (11 - (zbytek * 10) % 11) % 11;
 
@@ -121,13 +121,29 @@ int main(void) {
         int den = zadaneCislo(MIN_DAY, maxDen, "Zadej den");
 
         int pohlavi = zadaneCislo(MIN_POHLAVI, MAX_POHLAVI, "Zadej pohlavi (0 - zena, 1 - muz)");
+
+
         int trojcisli = zadaneCislo(MIN_TROJCISLI, MAX_TROJCISLI, "Zadej trojcisli");
 
         int m = (pohlavi == 0) ? mesic + 50 : mesic;
-        sprintf(zakladStr, "%02d%02d%02d%03d", rok % 100, m, den, trojcisli);
-        long long int zaklad = atoll(zakladStr);
+        int zaklad;
+
+        int zbytek;
+
+        do {
+            sprintf(zakladStr, "%02d%02d%02d%03d", rok % 100, m, den, trojcisli);
+            zaklad = atoi(zakladStr);
+            zbytek = zaklad % 11;
+
+            if (zbytek == 10) {
+                trojcisli = rand() % 1000;
+                printf("Zbytek byl 10, generuju nove trojcisli: %03d\n", trojcisli);
+            }
+
+        } while (zbytek == 10);
 
         int posledniNum = posledniCislo(zaklad);
+
         rodneCislo(rok, mesic, den, pohlavi, trojcisli, posledniNum, rc);
         printf("Rodne cislo je: %s \n", rc);
 
@@ -138,6 +154,3 @@ int main(void) {
     return 0;
 }
 
-// DODELAT: kdyz je zbytek 10, to trojcisli se musi vygenerovat znovu (nahodne)
-// Odstranit long long (mozna se vleze int)
-// Funkce posledniCislo bere parametr ale nijak ho nevyuziva
